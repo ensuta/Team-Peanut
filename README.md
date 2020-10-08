@@ -1,3 +1,17 @@
+<h1> 커밋 메시지 규칙 </h1>
+
+형식
+
+### `[add / fix | 오늘 날짜 | 새로운 내용]`
+
+#### add 는 새로운 내용 추가 시 써주세요
+
+#### fix 는 원래 내용 수정 시 써주세요 
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
