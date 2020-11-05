@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import palette from '../../libs/styles/palette';
 import Button from '../common/Button'
+import './AuthForm.css';
 
 /**
  * 회원가입 또는 로그인 폼을 보여줍니다.
@@ -11,7 +12,6 @@ import Button from '../common/Button'
 const AuthFormBlock = styled.div`
   h3 {
     margin: 0;
-    color: ${palette.gray[8]};
     margin-bottom: 1rem;
   }
 `;
@@ -61,22 +61,26 @@ const textMap = {
 
 
 
-const AuthForm = ({ type }) => {
+const AuthForm = ({ type, form, onChange, onSubmit }) => {
   const text = textMap[type];
   return (
-    <AuthFormBlock>
+    <AuthFormBlock className = "background">
       <h3>{text}</h3>
       <form>
         <StyledInput
           autoComplete="username"
           name="username"
           placeholder="아이디"
+          onChange = {onChange}
+          value = {form.username}
         />
         <StyledInput
           autoComplete="new-password"
           name="password"
           placeholder="비밀번호"
           type="password"
+          onChange = {onChange}
+          value = {form.password}
         />
         {type === 'register' && (
           <StyledInput
@@ -84,6 +88,8 @@ const AuthForm = ({ type }) => {
             name="passwordConfirm"
             placeholder="비밀번호 확인"
             type="password"
+            onChange = {onChange}
+            value = {form.passwordConfrim}
           />
         )}
         <ButtonWithMarginTop cyan fullWidth style={{ marginTop: '1rem' }}>
