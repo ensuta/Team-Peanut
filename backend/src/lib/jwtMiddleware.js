@@ -7,6 +7,7 @@ const jwtMiddleware = async (ctx, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     ctx.state.user = {
+      manager : false,
       _id: decoded._id,
       username: decoded.username,
     };

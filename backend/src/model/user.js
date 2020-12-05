@@ -2,6 +2,7 @@ import moongose, { Schema } from 'mongoose';
 import bcrypt from 'bcrypt';
 
 const userSchema = new Schema({
+    manager : Boolean,
     username : String,
     hashedPassword : String,
 });
@@ -15,6 +16,7 @@ userSchema.methods.checkPassword = async function(password){
     const result = await bcrypt.compare(password, this.hashedPassword);
     return result;
 }
+
 
 const user = moongose.model('User', userSchema);
 

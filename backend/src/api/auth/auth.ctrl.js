@@ -11,6 +11,7 @@ import User from '../../models/user';
 export const register = async ctx => {
   // Request Body 검증하기
   const schema = Joi.object().keys({
+    manager : false,
     username: Joi.string()
       .alphanum()
       .min(3)
@@ -38,6 +39,7 @@ export const register = async ctx => {
       username,
     });
     await user.setPassword(password); // 비밀번호 설정
+    await user.setManager();
     await user.save(); // 데이터베이스에 저장
 
     ctx.body = user.serialize();
